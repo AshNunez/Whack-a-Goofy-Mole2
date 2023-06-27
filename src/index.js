@@ -41,7 +41,7 @@ function play(){
  *
  */
 function randomInteger(min, max) {
-   return Math.floor(Math.random() * (max - min + 1)) + min;
+   return Math.floor(Math.random() * (max - min)) + min;
 }
 
 /**
@@ -157,6 +157,7 @@ function showUp() {
 function showAndHide(hole, delay) {
   // TODO: call the toggleVisibility function so that it adds the 'show' class.
    //console.log('whackagle ${whackagle}');
+toggleVisibility(hole);
 
   const timeoutID = setTimeout(() => {
     toggleVisibility(hole);// TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
