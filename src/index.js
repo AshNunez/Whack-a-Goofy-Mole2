@@ -9,7 +9,7 @@ const audioHit = new Audio('./assets/hit.mp3');
 const song = new Audio('./assets/molesong.mp3');
 
 let time = 0;
-let timer = 15;
+let timer= 15;
 let lastHole = 0;
 let points = 0;
 let difficulty = "hard";
@@ -61,6 +61,8 @@ function randomInteger(min, max) {
  */
 function setDelay(difficulty) {
   // TODO: Write your code here.
+  //3 sets of difficulties
+
   if (difficulty === 'easy') { return 1500 }
   if (difficulty === 'normal') { return 1000 }
   if (difficulty === 'hard') { return randomInteger(600, 1200) }
@@ -79,8 +81,11 @@ function setDelay(difficulty) {
  * const holes = document.querySelectorAll('.hole');
  * chooseHole(holes) //> returns one of the 9 holes that you defined
  */
+
+
 function chooseHole(holes) {
   // TODO: Write your code here.
+  // A random mole should pop up one at a time.
 
   const index = randomInteger(0, 8)
   const hole = holes[index]
@@ -117,7 +122,7 @@ function gameOver() {
   // TODO: Write your code here
   if (time > 0) {
     timeoutId = showUp()
-    return timeoutId
+    return timeoutId;
   }
 
   else {
@@ -185,7 +190,8 @@ function toggleVisibility(hole){
 *
 */
 function updateScore() {
-  // TODO: Write your code here
+  // TODO: Write your code here 
+  //This ensures that once the moles are clicked on, that it adds one to the counter and updates the score of how many were "clicked on."
   points++;
   score.textContent = points;
   return points;
@@ -200,6 +206,7 @@ function updateScore() {
 */
 function clearScore() {
   // TODO: Write your code here
+  //When refreshing the screen, the score couner gets set back to "0."
   points = 0;
   score.textContent = points;
   return points;
@@ -243,6 +250,7 @@ function startTimer() {
 function whack(event) {
   // TODO: Write your code here.
   // call updateScore()
+  // This will emit the audio once a mole is "whacked."
 
   console.log("wack!")
   updateScore();
@@ -257,6 +265,7 @@ function whack(event) {
 */
 function setEventListeners() {
   // TODO: Write your code here
+  
   moles.forEach(
     mole => mole.addEventListener('click', whack)
   );
@@ -291,7 +300,8 @@ function stopGame(){
 *
 * This is the function that starts the game when the `startButton`
 * is clicked.
-*
+* // Once the start button is clicked, the audio will start playing for the game. 
+// You can also disable the audio by clicking on the audio symbol on the header tab.
 */
 function startGame() {
   loopAudio(song)
